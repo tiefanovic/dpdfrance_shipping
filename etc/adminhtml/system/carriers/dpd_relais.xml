@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!--
+ This file is part of the Magento 2 Shipping module of DPD France.
+
+ Copyright (C) 2018  Tiefanovic.
+.
+-->
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="dpdfrrelais" translate="label" type="text" sortOrder="-2" showInDefault="1" showInWebsite="1"
+           showInStore="1">
+        <label>Livraison DPD Relais (France uniquement)</label>
+        <comment><![CDATA[<strong>Veuillez configurer la livraison DPD Relais ci-dessous.</strong><br />Pour de l'aide, veuillez vous référez à la documentation de ce module disponible ici : <a href="../../../../../../../../media/dpdfrance/readme_dpdfrance_magento.pdf" target="_blank">PDF</a>]]></comment>
+        <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1"
+               showInStore="0">
+            <label>Enabled</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+        </field>
+        <field id="name" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Method Name</label>
+        </field>
+		<field id="rate_type" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+			<label>Rate Type</label>
+			<source_model>DPDFrance\Shipping\Config\Source\Settings\RateType</source_model>
+		</field>
+        <field id="serviceurl" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>URL MyPudo</label>
+        </field>
+        <field id="indentifier" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>ID trader</label>
+        </field>
+        <field id="key" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Security Key</label>
+        </field>
+        <field id="depot" translate="label  comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Your DPD Depot #</label>
+            <comment><![CDATA[Sur 3 chiffres (ex.: 013)</a>]]></comment>
+        </field>
+        <field id="cargo" translate="label  comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Your DPD Relais contract #</label>
+            <comment><![CDATA[Sur 4 ou 5 chiffres, sans code agence, sans espace, sans tiret ni zéros devant</a>]]></comment>
+        </field>
+        <field id="google_api_key" translate="label  comment" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Google Maps API Key</label>
+            <comment><![CDATA[<a href="https://console.developers.google.com/flows/enableapi?apiid=maps_backend,geocoding_backend,directions_backend,distance_matrix_backend,elevation_backend,places_backend&keyType=CLIENT_SIDE&reusekey=true" target="_blank" >Cliquez-ici pour générer votre clé API Google Maps</a>]]></comment>
+        </field>
+        <field id="expense" translate="label  comment" type="textarea" sortOrder="95" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Shipping rates configuration</label>
+           
+        </field>
+        <field id="price" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Price</label>
+            <validate>validate-number validate-zero-or-greater</validate>
+			<depends>
+				<field id="rate_type">flat</field>
+			</depends>
+        </field>
+        <field id="sort_order" translate="label" type="text" sortOrder="1000" showInDefault="1" showInWebsite="1"
+               showInStore="0">
+            <label>Sort Order</label>
+        </field>
+        <field id="title" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Title</label>
+        </field>
+        <field id="sallowspecific" translate="label" type="select" sortOrder="900" showInDefault="1" showInWebsite="1"
+               showInStore="0">
+            <label>Ship to Applicable Countries</label>
+            <frontend_class>shipping-applicable-country</frontend_class>
+            <source_model>Magento\Shipping\Model\Config\Source\Allspecificcountries</source_model>
+        </field>
+        <field id="specificcountry" translate="label" type="multiselect" sortOrder="910" showInDefault="1"
+               showInWebsite="1" showInStore="0">
+            <label>Ship to Specific Countries</label>
+            <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+            <can_be_empty>1</can_be_empty>
+        </field>
+        <field id="showmethod" translate="label" type="select" sortOrder="920" showInDefault="1" showInWebsite="1"
+               showInStore="0">
+            <label>Show Method if Not Applicable</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+        </field>
+        <field id="specificerrmsg" translate="label" type="textarea" sortOrder="800" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Displayed Error Message</label>
+        </field>
+    </group>
+</include>

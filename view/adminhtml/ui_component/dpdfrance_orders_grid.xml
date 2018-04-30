@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Ui/etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">dpdfrance_orders_grid.dpdfrance_orders_grid_data_source</item>
+            <item name="deps" xsi:type="string">dpdfrance_orders_grid.dpdfrance_orders_grid_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">grid_records_columns</item>
+    </argument>
+    <dataSource name="dpdfrance_orders_grid_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">DPDFrance\Shipping\UiComponent\DataProvider</argument>
+            <argument name="name" xsi:type="string">dpdfrance_orders_grid_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <container name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="template" xsi:type="string">ui/grid/toolbar</item>
+                <item name="stickyTmpl" xsi:type="string">ui/grid/sticky/toolbar</item>
+            </item>
+        </argument>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="columnsProvider" xsi:type="string">dpdfrance_orders_grid.dpdfrance_orders_grid.grid_records_columns</item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">dpdfrance_orders_grid.dpdfrance_orders_grid.listing_top.bookmarks</item>
+                        <item name="namespace" xsi:type="string">current.filters</item>
+                    </item>
+                    <item name="templates" xsi:type="array">
+                        <item name="filters" xsi:type="array">
+                            <item name="select" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                                <item name="template" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                            </item>
+                        </item>
+                    </item>
+                    <item name="childDefaults" xsi:type="array">
+                        <item name="provider" xsi:type="string">dpdfrance_orders_grid.dpdfrance_orders_grid.listing_top.listing_filters</item>
+                        <item name="imports" xsi:type="array">
+                            <item name="visible" xsi:type="string">dpdfrance_orders_grid.dpdfrance_orders_grid.grid_records_columns.${ $.index }:visible</item>
+                        </item>
+                    </item>
+                </item>
+                <item name="observers" xsi:type="array">
+                    <item name="column" xsi:type="string">column</item>
+                </item>
+            </argument>
+        </filters>
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="selectProvider" xsi:type="string">dpdfrance_orders_grid.dpdfrance_orders_grid.grid_records_columns.ids</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+                    <item name="indexField" xsi:type="string">id</item>
+                </item>
+            </argument>
+            <!-- Mass actions which you want to add in your grid-->
+            <action name="export">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">export</item>
+                        <item name="label" xsi:type="string" translate="true">Export selected orders</item>
+                        <item name="url" xsi:type="url" path="dpdfrance/orders/massexport"/>
+                    </item>
+                </argument>
+            </action>
+            <action name="track">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">track</item>
+                        <item name="label" xsi:type="string" translate="true">Update shipped orders</item>
+                        <item name="url" xsi:type="url" path="dpdfrance/orders/masstrack"/>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+        <paging name="listing_paging">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">dpdfrance_orders_grid.dpdfrance_orders_grid.listing_top.bookmarks</item>
+                        <item name="namespace" xsi:type="string">current.paging</item>
+                    </item>
+                    <item name="selectProvider" xsi:type="string">dpdfrance_orders_grid.dpdfrance_orders_grid.grid_records_columns.ids</item>
+                </item>
+            </argument>
+        </paging>
+    </container>
+    <columns name="grid_records_columns">
+        <selectionsColumn name="ids">
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                   <item name="indexField" xsi:type="string">entity_id</item>
+                   <item name="sorting" xsi:type="string">desc</item>
+                   <item name="sortOrder" xsi:type="number">0</item>
+               </item>
+           </argument>
+       </selectionsColumn>
+       <column name="increment_id"  >
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                   <item name="filter" xsi:type="string">textRange</item>
+                   <item name="label" xsi:type="string" translate="true">#Order Id</item>
+                   <item name="sortOrder" xsi:type="string">5</item>
+               </item>
+           </argument>
+       </column>
+       <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" >
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                   <item name="filter" xsi:type="string">dateRange</item>
+                   <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                   <item name="dataType" xsi:type="string">date</item>
+                   <item name="label" xsi:type="string" translate="true">Purchased On</item>
+                   <item name="sortOrder" xsi:type="string">10</item>
+               </item>
+           </argument>
+       </column>
+       <column name="shipping_name">
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                   <item name="filter" xsi:type="string">textRange</item>
+                   <item name="label" xsi:type="string" translate="true">Ship to name</item>
+                   <item name="sortOrder" xsi:type="string">20</item>
+               </item>
+           </argument>
+       </column>
+       <column name="shipping_method">
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                   <item name="filter" xsi:type="string">textRange</item>
+                   <item name="label" xsi:type="string" translate="true">Service</item>
+                   <item name="sortOrder" xsi:type="string">30</item>
+               </item>
+           </argument>
+       </column>
+       <column name="shipping_company" >
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">false</item>
+                    <item name="label" xsi:type="string" translate="true">Company / DPD Pickup point</item>
+                    <item name="sortOrder" xsi:type="string">40</item>
+               </item>
+           </argument>
+       </column>
+       <column name="shipping_street">
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                   <item name="filter" xsi:type="string">textRange</item>
+                   <item name="label" xsi:type="string" translate="true">Shipping Address</item>
+                   <item name="sortOrder" xsi:type="string">50</item>
+               </item>
+           </argument>
+       </column>
+       <column name="shipping_postcode" >
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="label" xsi:type="string" translate="true">Code Postal</item>
+                    <item name="sortOrder" xsi:type="string">60</item>
+               </item>
+           </argument>
+       </column>
+       <column name="shipping_city" >
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="label" xsi:type="string" translate="true">City</item>
+                    <item name="sortOrder" xsi:type="string">70</item>
+               </item>
+           </argument>
+       </column>
+       <column name="shipping_country_id" >
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="label" xsi:type="string" translate="true">Country</item>
+                    <item name="sortOrder" xsi:type="string">80</item>
+               </item>
+           </argument>
+       </column>
+       <column name="weight" >
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="label" xsi:type="string" translate="true">Weight</item>
+                    <item name="sortOrder" xsi:type="string">90</item>
+               </item>
+           </argument>
+       </column>
+       <column name="base_grand_total" >
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="label" xsi:type="string" translate="true">G.T. (Base)</item>
+                    <item name="sortOrder" xsi:type="string">100</item>
+               </item>
+           </argument>
+       </column>
+        <column name="sales_order.status">
+			<argument xsi:type="array" name="data">
+				<item xsi:type="object" name="options">Magento\Sales\Ui\Component\Listing\Column\Status\Options</item>
+				<item xsi:type="array" name="config">
+					<item xsi:type="string" name="filter">select</item>
+					<item xsi:type="string" name="component">Magento_Ui/js/grid/columns/select</item>
+					<item xsi:type="string" name="dataType">select</item>
+					<item xsi:type="string" name="label" translate="true">Status</item>
+				</item>
+			</argument>
+		</column>
+       <actionsColumn name="actions" class="DPDFrance\Shipping\UiComponent\Action">
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                   <item name="resizeEnabled" xsi:type="boolean">false</item>
+                   <item name="resizeDefaultWidth" xsi:type="string">107</item>
+                   <item name="indexField" xsi:type="string">id</item>
+               </item>
+           </argument>
+       </actionsColumn>
+    </columns>
+</listing>

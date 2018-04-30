@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ This file is part of the Magento 2 Shipping module of DPD France.
+
+ Copyright (C) 2018  Tiefanovic.
+.
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <listingToolbar name="listing_top">
+        <massaction name="listing_massaction">
+            <action name="dpd_create_shipment">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">dpd_create_shipment</item>
+                        <item name="label" xsi:type="string" translate="true">DPD - Create B2C shipment(s)</item>
+                        <item name="url" xsi:type="url" path="dpdshipping/order/createShipment"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">DPD - Create B2C shipment(s)</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you want to create shipments and download labels for the selected orders?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+    </listingToolbar>
+</listing>

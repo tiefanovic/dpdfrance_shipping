@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <section id="carriers" translate="label" type="text" sortOrder="320" showInDefault="1" showInWebsite="1" showInStore="1">
+
+        <include path="DPDFrance_Shipping::system/carriers/dpd_predict.xml"/>
+        <include path="DPDFrance_Shipping::system/carriers/dpd_classic.xml"/>
+        <include path="DPDFrance_Shipping::system/carriers/dpd_relais.xml"/>
+
+    </section>
+</include>

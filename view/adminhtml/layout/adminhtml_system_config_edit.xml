@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ This file is part of the Magento 2 Shipping module of DPD France.
+
+ Copyright (C) 2018  Tiefanovic.
+.
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="DPDFrance_Shipping::css/dpd_adminhtml.css" />
+    </head>
+</page>

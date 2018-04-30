@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+ This file is part of the Magento 2 Shipping module of DPD France.
+
+ Copyright (C) 2018  Tiefanovic.
+.
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="checkout_submit_all_after">
+        <observer name="dbdfrance_shipping_quote_to_order" instance="DPDFrance\Shipping\Observer\Observer" />
+    </event>
+</config>

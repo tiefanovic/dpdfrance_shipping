@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="header" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+           showInStore="1">
+    <label>Documentation</label>
+    <comment>config_comment</comment>
+    </group>
+    <group id="shipping" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+           showInStore="1">
+        <label>Your personal data</label>
+        <field id="nom_exp" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Company Name</label>
+        </field>
+        <field id="adresse1_exp" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Address 1</label>
+        </field>
+        <field id="adresse2_exp" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Address 2</label>
+        </field>
+        <field id="cp_exp" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Postal code</label>
+        </field>
+        <field id="ville_exp" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>City</label>
+        </field>
+        <field id="tel_exp" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Telephone</label>
+        </field>
+        <field id="gsm_exp" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Mobile</label>
+        </field>
+     <field id="email_exp" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+         <label>E-mail</label>
+        </field>
+    </group>
+	<group id="tablerate" translate="label" type="text" sortOrder="30" showInDefault="0" showInWebsite="1" showInStore="0">
+        <label>Table rate settings</label>
+		<field id="condition_name" translate="label" type="select" sortOrder="42" showInDefault="0" showInWebsite="1" showInStore="0" canRestore="1">
+			<label>Condition</label>
+			<source_model>Magento\OfflineShipping\Model\Config\Source\Tablerate</source_model>
+		</field>
+		<field id="export" translate="label" type="DPDFrance\Shipping\Block\Adminhtml\TablerateExport" sortOrder="43" showInDefault="0" showInWebsite="1" showInStore="0">
+			<label>Export</label>
+		</field>
+		<field id="import" translate="label" type="DPDFrance\Shipping\Block\Adminhtml\TablerateImport" sortOrder="44" showInDefault="0" showInWebsite="1" showInStore="0">
+			<label>Import</label>
+			<backend_model>DPDFrance\Shipping\Model\Config\Tablerate</backend_model>
+		</field>
+	</group>
+	<group id="export_station" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1"
+	   showInStore="1">
+
+        <field id="ad_valorem" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Default parcel insurance service</label>
+            <source_model>DPDFrance\Shipping\Model\Config\Advalorem</source_model>
+        </field>
+		
+        <field id="retour" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>DPD Returns service</label>
+            <source_model>DPDFrance\Shipping\Model\Config\Retour</source_model>
+        </field>
+    </group>
+</include>

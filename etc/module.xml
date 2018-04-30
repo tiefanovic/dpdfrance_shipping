@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+ This file is part of the Magento 2 Shipping module of DPD France.
+
+ Copyright (C) 2018  Tiefanovic.
+.
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="DPDFrance_Shipping" setup_version="1.0.6">
+        <sequence>
+            <module name="Magento_Backend"/>
+            <module name="Magento_Quote"/>
+            <module name="Magento_Checkout"/>
+        </sequence>
+    </module>
+</config>

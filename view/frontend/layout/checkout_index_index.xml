@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+ This file is part of the Magento 2 Shipping module of DPD France.
+
+ Copyright (C) 2018  Tiefanovic.
+.
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="DPDFrance_Shipping::css/dpdfrrelais.css" />
+    </head>
+    <body>
+        <referenceBlock name="checkout.root">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="checkout" xsi:type="array">
+                            <item name="children" xsi:type="array">
+								<item name="sidebar" xsi:type="array">
+									<item name="children" xsi:type="array">
+										<item name="dbdfrance-shipping-parcelshop-info" xsi:type="array">
+                                            <item name="component" xsi:type="string">DPDFrance_Shipping/js/view/checkout/shipping/parcelshop</item>
+											<item name="config" xsi:type="array">
+												<item name="deps" xsi:type="string">checkout.steps.shipping-step.shippingAddress</item>
+											</item>
+											<item name="displayArea" xsi:type="string">shipping-information</item>
+										</item>
+									</item>
+								</item>
+
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="head.additional">
+            <block class="DPDFrance\Shipping\Block\GoogleMaps" name="dpd.googlemaps.api" template="DPDFrance_Shipping::checkout/shipping/googlemaps.phtml"/>
+        </referenceContainer>
+    </body>
+</page>
